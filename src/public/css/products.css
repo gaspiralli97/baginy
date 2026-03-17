@@ -31,7 +31,7 @@
   font-family: monospace;
 }
 
-.products-container .restaurant-menu-frame {
+.products-container .seller-product-list-frame {
   position: relative;
   padding-bottom: 80px;
   width: 100%;
@@ -42,7 +42,7 @@
   align-items: center;
 }
 
-.products-container .restaurant-menu-frame .board {
+.products-container .seller-product-list-frame .board {
   position: relative;
   margin-top: 100px;
   width: 1320px;
@@ -52,7 +52,7 @@
   align-items: center;
 }
 
-.products-container .board .dishes-table {
+.products-container .board .products-table {
   position: relative;
   width: 100%;
   height: auto;
@@ -62,7 +62,7 @@
   align-items: center;
 }
 
-.products-container .board .dish-container {
+.products-container .board .product-container {
   position: relative;
   margin-top: 20px;
   width: 100%;
@@ -74,7 +74,7 @@
   align-items: center;
 }
 
-.products-container .new-dish-txt {
+.products-container .new-product-txt {
   font-family: "Source Serif Pro";
   font-style: normal;
   font-weight: 400;
@@ -180,7 +180,7 @@
   color: #4f547b;
 }
 
-.products-container .dish-container .half-input-frame {
+.products-container .product-container .half-input-frame {
   position: relative;
   margin-top: 25px;
   width: 100%;
