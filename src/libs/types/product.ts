@@ -1,4 +1,4 @@
-import { ProductCollection, ProductSize, ProductStatus } from "../enums/product.enum";
+import { ProductBundle, ProductCollection, ProductColor, ProductMode, ProductSize, ProductStatus } from "../enums/product.enum";
 import {ObjectId} from "mongoose";
 
 export interface Product{
@@ -9,7 +9,9 @@ export interface Product{
     productPrice: number;
     productLeftCount: number;
     productSize: ProductSize;
-    productVolume: number;
+    productColor: ProductColor;
+    productBundle: ProductBundle;
+    productMode: ProductMode;
     productDesc?: string;
     productImages: string[];
     productViews: number;
@@ -35,7 +37,9 @@ export interface ProductInput{
     productPrice: number;
     productLeftCount: number;
     productSize?: ProductSize;
-    productVolume?: number;
+    productColor: ProductColor;
+    productBundle: ProductBundle;
+    productMode: ProductMode;
     productDesc?: string;
     productImages?: string[];
     productViews?: number;
@@ -48,7 +52,9 @@ export interface ProductUpdateInput{
     productPrice?: number;
     productLeftCount?: number;
     productSize?: ProductSize;
-    productVolume?: number;
+    productColor?: ProductColor;
+    productBundle?: ProductBundle;
+    productMode?: ProductMode;
     productDesc?: string;
     productImages?: string[];
     productViews?: number;

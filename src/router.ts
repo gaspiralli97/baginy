@@ -9,7 +9,7 @@ import orderController from "./controllers/order.controller";
 
 /** member **/
 
-router.get("/member/restaurant", memberController.getRestaurant);
+router.get("/member/seller", memberController.getSeller);
 router.post("/member/login", memberController.login);
 
 router.post("/member/signup", memberController.signup);

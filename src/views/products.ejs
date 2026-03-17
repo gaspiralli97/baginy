@@ -10,7 +10,7 @@
           <a class="nav-link active" href="/admin/">Home</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Menu</a>
+          <a class="nav-link" href="/admin/product/all">Product List</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
           <a class="nav-link" href="/admin/user/all">Users</a>
@@ -25,11 +25,11 @@
       </ul>
     </div>
 
-    <div class="restaurant-menu-frame">
+    <div class="seller-product-list-frame">
       <div class="board">
-        <div class="dishes-table">
-          <span class="new-dish-txt" style="margin-bottom: 30px">
-            RESTAURANT MENU
+        <div class="products-table">
+          <span class="new-product-txt" style="margin-bottom: 30px">
+            SELLER PRODUCT LIST
           </span>
           <table class="table table-bordered table-hover">
             <thead class="thead-light">
@@ -78,11 +78,11 @@
         onsubmit="return validateForm()"
           action="/admin/product/create"
           method="POST"
-          class="dish-container"
+          class="product-container"
           enctype="multipart/form-data"
         >
           <div class="long-input" style="display: flex; align-items: center">
-            <span class="new-dish-txt">NEW PRODUCT DETAIL</span>
+            <span class="new-product-txt">NEW PRODUCT DETAIL</span>
           </div>
           <div class="login-input-frame">
             <div class="long-input">
@@ -125,7 +125,7 @@
             <div class="half-input">
               <label>Product Type</label>
               <select class="product-collection" name="productCollection">
-                <option value="DISH" selected>Dish</option>
+                <option value="PRODUCT" selected>Product</option>
                 <option value="SALAD">Salad</option>
                 <option value="DESSERT">Dessert</option>
                 <option value="DRINK">Drink</option>
@@ -134,7 +134,7 @@
             </div>
 
             <div class="half-input" id="product-collection">
-              <label>Dish Volume</label>
+              <label>Product Volume</label>
               <select class="product-size" name="productSize">
                 <option value="SMALL">Small</option>
                 <option value="NORMAL" selected>Normal</option>
@@ -213,7 +213,7 @@
                   onchange="previewFileHandler(this, 5)"
                 />
               </div>
-              <input name="restaurantIid" class="restaurant-id" hidden />
+              <input name="sellerIid" class="seller-id" hidden />
             </div>
           </div>
 

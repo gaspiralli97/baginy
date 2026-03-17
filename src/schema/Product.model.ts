@@ -1,7 +1,7 @@
 
 
 import mongoose, { Schema } from "mongoose";
-import { ProductCollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
+import { ProductBundle, ProductCollection, ProductColor, ProductMode, ProductSize, ProductStatus,} from "../libs/enums/product.enum";
 
 const productSchema = new Schema({
   productStatus: {
@@ -36,15 +36,27 @@ const productSchema = new Schema({
   productSize:{
     type: String,
     enum:ProductSize,
-    default:ProductSize.NORMAL,
+    default:ProductSize.LARGE,
 
   },
 
-   productVolume:{
-    type: Number,
-    enum:ProductVolume,
-    default:ProductVolume.ONE,
+   productBundle:{
+    type: String,
+    enum:ProductBundle,
+    default:ProductBundle.SINGLE,
+  },
 
+  productColor:{
+    type: String,
+    enum:ProductColor,
+    default:ProductColor.GREY,
+  },
+
+
+  ProductMode:{
+    type: String,
+    enum:ProductMode,
+    default:ProductMode.ELEGANT,
   },
 
    productDesc: {
@@ -61,6 +73,8 @@ const productSchema = new Schema({
     type: Number,
     default:0,
   },
+
+
 
 }, 
 
