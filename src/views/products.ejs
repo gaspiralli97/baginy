@@ -5,7 +5,7 @@
 <body>
   <div class="products-container">
     <div class="navigation-menu">
-      <ul class="nav justify-content-center">
+      <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
           <a class="nav-link active" href="/admin/">Home</a>
         </li>
@@ -31,16 +31,21 @@
           <span class="new-product-txt" style="margin-bottom: 30px">
             SELLER PRODUCT LIST
           </span>
-          <table class="table table-bordered table-hover">
-            <thead class="thead-light">
-              <tr class="thead-light">
-                <th scope="col">T/r</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Product Type</th>
-                <th scope="col">Product Volume</th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Product Left Count</th>
-                <th scope="col">Status</th>
+          <table class="table table-bordered table-hover" style="cursor: pointer">
+            <thead>
+              <tr style="background: #0C0C0C; color: #FFFFFF;">
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">T/r</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Name</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Type</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Price</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Left Count</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Bundle</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Color</th>
+                
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Mode</th>
+                
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Size</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Status</th>
               </tr>
             </thead>
             <!--  LOOP PRODUCTS: START  -->
@@ -49,10 +54,13 @@
               <td><%= key + 1%></td>
               <td><%= value.productName %></td>
               <td><%= value.productCollection %></td>
-              <td><%= value.productCollection === `DRINK` ? 
-                value.productVolume: value.productSize %></td>
               <td><%= value.productPrice %></td>
               <td><%= value.productLeftCount %></td>
+               <td><%= value.productBundle %></td>
+              <td><%= value.productColor %></td>
+              <td><%= value.productMode %></td>
+              <td><%= value.productSize %></td>
+              
               <td>
                 <select class="spec-select new-product-status" id="<%= value._id %>">
                   <option value="PAUSE" <%= value.productStatus === `PAUSE` ? `selected`: `` %> >PAUSE</option>
@@ -68,8 +76,9 @@
           <div
             class="long-input"
             style="align-items: flex-end; margin-bottom: 25px"
+            style="cursor: pointer"
           >
-            <button class="btn btn-primary" id="process-btn">
+            <button class="btn btn-primary" id="process-btn" style="background: #0C0C0C; border: none; color: #FFFFFF;">
               New Product
             </button>
           </div>
@@ -124,33 +133,48 @@
           <div class="half-input-frame">
             <div class="half-input">
               <label>Product Type</label>
-              <select class="product-collection" name="productCollection">
-                <option value="PRODUCT" selected>Product</option>
-                <option value="SALAD">Salad</option>
-                <option value="DESSERT">Dessert</option>
-                <option value="DRINK">Drink</option>
-                <option value="OTHER">Other</option>
+              <select class="product-collection" id="product-type-select" name="productCollection">
+                <option value="TRAVEL">Travel</option>
+                <option value="SPORT" selected>Sport</option>
+                <option value="BUSINESS">Business</option>
+                <option value="SPECIAL">Special</option>
+              </select>
+            </div>
+            <div class="half-input">
+              <label>Product Color</label>
+              <select class="product-color" name="productColor">
+                <option value="WHITE" selected>White</option>
+                <option value="GREY">Grey</option>
+                <option value="PINK">Pink</option>
+                <option value="DARK_BROWN">Dark Brown</option>
+                <option value="GOLD">Gold</option>
+                <option value="BURGUNDY">Burgundy</option>
               </select>
             </div>
 
-            <div class="half-input" id="product-collection">
-              <label>Product Volume</label>
-              <select class="product-size" name="productSize">
-                <option value="SMALL">Small</option>
-                <option value="NORMAL" selected>Normal</option>
-                <option value="LARGE">Large</option>
+            <div class="half-input">
+              <label>Product Mode</label>
+              <select class="product-mode" name="productMode">
+                <option value="ELEGANT" selected>Elegant</option>
+                <option value="PREMIUM">Premium</option>
+              </select>
+            </div>
+
+            <div class="half-input">
+              <label>Product Bundle</label>
+              <select class="product-bundle" name="productBundle">
+                <option value="SINGLE" selected>Single</option>
                 <option value="SET">Set</option>
               </select>
             </div>
 
-            <div class="half-input" id="product-volume" style="display: none">
-              <label>Drink Volume</label>
-              <select class="product-volume" name="productVolume">
-                <option value="0.5">0,5 liters</option>
-                <option value="1" selected>1 liters</option>
-                <option value="1.2">1,2 liters</option>
-                <option value="1.5">1,5 liters</option>
-                <option value="2">2 liters</option>
+
+
+            <div class="half-input" id="product-size-box" style="display:none">
+              <label>Product Size</label>
+              <select class="product-size" name="productSize">
+                <option value="20 INCH">20 Inch</option>
+                <option value="28 INCH">28 Inch</option>
               </select>
             </div>
           </div>
@@ -219,7 +243,7 @@
 
           <div class="operation-buttons">
             <button class="btn btn-danger" id="cancel-btn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="create-btn">
+            <button type="submit" class="btn btn-primary" id="create-btn" style="background: #0C0C0C; border: none; color: #FFFFFF;">
               Create
             </button>
           </div>

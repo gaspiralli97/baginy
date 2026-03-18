@@ -36,8 +36,6 @@ const productSchema = new Schema({
   productSize:{
     type: String,
     enum:ProductSize,
-    default:ProductSize.LARGE,
-
   },
 
    productBundle:{
@@ -53,7 +51,7 @@ const productSchema = new Schema({
   },
 
 
-  ProductMode:{
+  productMode:{
     type: String,
     enum:ProductMode,
     default:ProductMode.ELEGANT,
@@ -83,7 +81,7 @@ const productSchema = new Schema({
 );
 
 productSchema.index(
-    {productName: 1, productSize: 1, productVolume: 1},
+    {productName: 1, productSize: 1},
     {unique:true}
 );
 

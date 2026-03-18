@@ -4,14 +4,30 @@
 
 <body>
   <div class="signup-container">
+
+    <!-- animated background -->
+    <div class="bg-lines"></div>
+    <div class="bg-shapes">
+      <span class="shape s1"></span>
+      <span class="shape s2"></span>
+      <span class="shape s3"></span>
+      <span class="shape s4"></span>
+      <span class="shape s5"></span>
+      <span class="shape s6"></span>
+      <span class="shape s7"></span>
+    </div>
+
+    <!-- brand -->
+    <div class="brand-label">VELMORA</div>
+
     <form onsubmit="return validateSignupForm()" action="/admin/signup" method="POST" enctype="multipart/form-data">
       <div class="signup-frame" style="width: 650px">
         <div class="signup-top">
           <span>Signup</span>
-          <div>Go back <a href="/admin" style="color: #6440fb">Home</a></div>
+          <div>Go back <a href="/admin">Home</a></div>
           <p>
             Already signed up?
-            <a href="/admin/login" style="color: #6440fb">Login</a>
+            <a href="/admin/login">Login</a>
           </p>
         </div>
 
@@ -64,7 +80,7 @@
           <div class="media-frame">
             <img class="upload-img-frame" src="/img/default.jpeg" />
             <div class="upload-container">
-              <span class="media-text">Product image</span>
+              <span class="media-text">Seller image</span>
               <div
                 class="file-box bs3-primary preview-image"
                 style="margin-top: 25px; display: flex"
@@ -96,7 +112,7 @@
         <input name="memberType" value="SELLER" hidden />
 
         <button class="signup-btn btn" name="signup" type="submit">
-          Signup
+          SIGNUP
         </button>
       </div>
     </form>

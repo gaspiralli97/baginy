@@ -1,3 +1,5 @@
+/* === VELMORA Admin — Products (SpaceKit) === */
+
 .products-container {
   position: relative;
   width: auto;
@@ -6,52 +8,76 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383);
+  background: #F8F6F1;
 }
 
 .products-container a {
   text-decoration: none;
-  color: #000000;
+  color: #0C0C0C;
 }
 
 .products-container .nav-item a {
-  color: #e3c08d;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+
+.products-container .nav-item a:hover {
+  opacity: 0.7;
 }
 
 .products-container .nav-item a.disabled {
-  color: #898071;
+  color: rgba(255,255,255,0.4);
 }
 
+/* ── Navigation bar ── */
 .products-container .navigation-menu {
-  position: absolute;
-  z-index: 10000;
-  top: 1%;
-  color: #efefee;
-  font-size: 40px;
-  font-family: monospace;
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  background: #0C0C0C;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.products-container .navigation-menu .nav {
+  width: auto;
+}
+
+/* ── Content frame ── */
 .products-container .seller-product-list-frame {
   position: relative;
   padding-bottom: 80px;
   width: 100%;
   height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: transparent;
 }
 
+/* ── Board card ── */
 .products-container .seller-product-list-frame .board {
   position: relative;
-  margin-top: 100px;
+  margin-top: 40px;
   width: 1320px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #E8E4DC;
+  border-radius: 16px;
+  padding: 32px;
 }
 
+/* ── Products table section ── */
 .products-container .board .products-table {
   position: relative;
   width: 100%;
@@ -67,22 +93,22 @@
   margin-top: 20px;
   width: 100%;
   height: auto;
-
-  /* TODO: UNCOMMENT */
   display: none;
   flex-direction: column;
   align-items: center;
 }
 
+/* ── Section heading ── */
 .products-container .new-product-txt {
-  font-family: "Source Serif Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 25px;
-  color: #ffffff;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 28px;
+  color: #0C0C0C;
 }
 
+/* ── Long input ── */
 .products-container .long-input {
   position: relative;
   margin-top: 25px;
@@ -90,70 +116,92 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  
 }
 
 .products-container .long-input label {
-  font-family: "Source Serif Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
+  color: #0C0C0C;
+  
 }
 
 .products-container .long-input input {
   position: relative;
   margin-top: 10px;
-  padding-left: 20px;
+  padding-left: 16px;
   width: 100%;
-  height: 54px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
+  height: 50px;
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.products-container .long-input input:focus {
+  border-color: #0C0C0C;
+  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.10);
 }
 
 .products-container .long-input textarea {
   position: relative;
   margin-top: 10px;
-  padding: 20px;
+  padding: 16px;
   width: 100%;
   height: 200px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  resize: vertical;
 }
 
+.products-container .long-input textarea:focus {
+  border-color: #0C0C0C;
+  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.10);
+}
+
+/* ── Select elements ── */
 .products-container .half-input select {
   position: relative;
   margin-top: 10px;
-  padding: 0px 20px;
+  padding: 0px 16px;
   width: 100%;
-  height: 55px;
+  height: 50px;
   display: flex;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.products-container .half-input select:focus {
+  border-color: #0C0C0C;
 }
 
 .products-container select:focus {
@@ -164,22 +212,28 @@
 .products-container .long-input select {
   position: relative;
   margin-top: 10px;
-  padding: 0px 20px;
+  padding: 0px 16px;
   width: 100%;
-  height: 55px;
+  height: 50px;
   display: flex;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  font-family: "GT Walsheim Pro";
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.25s ease;
 }
 
+.products-container .long-input select:focus {
+  border-color: #0C0C0C;
+}
+
+/* ── Half input frame ── */
 .products-container .product-container .half-input-frame {
   position: relative;
   margin-top: 25px;
@@ -188,6 +242,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
+
 }
 
 .products-container .half-input-frame .half-input {
@@ -196,29 +252,43 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  
 }
 
 .products-container .half-input label {
-  font-family: "Source Serif Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
+  color: #0C0C0C;
+  
 }
 
 .products-container .half-input input {
   position: relative;
   margin-top: 10px;
-  padding-left: 20px;
+  padding-left: 16px;
   width: 100%;
-  height: 54px;
-  border: none;
-  background: #f7f7f7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  height: 50px;
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #0C0C0C;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.products-container .half-input input:focus {
+  border-color: #0C0C0C;
+  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.10);
+  
+}
+
+/* ── Media / image upload ── */
 .products-container .media-frame {
   position: relative;
   margin-top: 10px;
@@ -237,7 +307,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  border: 1.5px solid #E8E4DC;
+  background: #F8F6F1;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .products-container .upload-img-box img {
@@ -257,19 +330,19 @@
 
 .products-container .img-frame label {
   margin-top: 30px;
-  font-family: "Source Serif Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #ffffff;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
+  color: #0C0C0C;
 }
 
 .products-container #file {
   opacity: 0;
   border: none;
   border-radius: 10px;
-  background: grey;
+  background: transparent;
   position: absolute;
   left: 0px;
   width: 100%;
@@ -278,6 +351,7 @@
   cursor: pointer;
 }
 
+/* ── Operation buttons ── */
 .products-container .operation-buttons {
   margin-top: 20px;
   display: flex;
@@ -286,27 +360,88 @@
   align-items: center;
 }
 
+/* ── Spec select (table inline select) ── */
 .products-container .spec-select {
   position: relative;
-  padding: 0px 7px;
-  height: 27px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  padding: 0px 8px;
+  height: 30px;
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
   border-radius: 8px;
-  font-family: "GT Walsheim Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
+.products-container .spec-select:focus {
+  border-color: #0C0C0C;
+}
+
+/* ── Table ── */
 .products-container table td,
 table th {
   text-align: center;
   vertical-align: middle;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: #0C0C0C;
 }
 
+.products-container table thead th {
+  background: #0C0C0C;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-color: #0C0C0C;
+}
+
+/* ── Bootstrap button overrides ── */
+.products-container .btn-primary {
+  background: #0C0C0C;
+  border: none;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 22px;
+  transition: background 0.2s ease;
+}
+
+.products-container .btn-primary:hover,
+.products-container .btn-primary:focus,
+.products-container .btn-primary:active {
+  background: #2A2A2A;
+  border: none;
+  box-shadow: none;
+}
+
+.products-container .btn-danger {
+  background: #C0392B;
+  border: none;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 22px;
+  transition: background 0.2s ease;
+}
+
+.products-container .btn-danger:hover,
+.products-container .btn-danger:focus {
+  background: #A93226;
+  border: none;
+  box-shadow: none;
+}
+
+/* ── Toggle switch ── */
 .products-container .switch {
   position: relative;
   display: inline-block;
@@ -327,8 +462,7 @@ table th {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
+  background-color: #D0CCC4;
   transition: 0.4s;
 }
 
@@ -340,16 +474,15 @@ table th {
   left: 6px;
   bottom: 3.5px;
   background-color: white;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .products-container input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #0C0C0C;
 }
 
 .products-container input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #0C0C0C;
 }
 
 .products-container input:checked + .slider:before {

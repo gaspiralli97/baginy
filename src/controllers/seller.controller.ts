@@ -60,7 +60,7 @@ sellerController.processLogin = async (req:AdminRequest, res:Response) =>{
     } catch (err) {
         console.log("Error, processLogin:", err);
         const message=err instanceof Error ? err.message:Message.SOMETHING_WENT_WRONG;
-        res.send(`<script> alert ("${message}"); window.location.replace("/admin/login") <script>`);
+        res.send(`<script> alert ("${message}"); window.location.replace("/admin/login") </script>`);
     }
 };
 
@@ -138,8 +138,8 @@ sellerController.updateChosenUser = async (req:Request, res:Response) =>{
 sellerController.checkAuthSession = async (req:AdminRequest, res:Response) =>{
     try {
         console.log("checkAuthSession");
-        if(req.session?.member) res.send(`<script> alert ("${req.session.member.memberNick}") <script>`);
-        else res.send(`<script> alert ("${Message.NOT_AUTHENTICATED}") <script>`);
+        if(req.session?.member) res.send(`<script> alert ("${req.session.member.memberNick}") </script>`);
+        else res.send(`<script> alert ("${Message.NOT_AUTHENTICATED}") </script>`);
 
 
         
@@ -156,7 +156,7 @@ sellerController.verifySeller=(req:AdminRequest, res:Response, next: NextFunctio
             next();
   } else {
     const message =Message.NOT_AUTHENTICATED;
-     res.send(`<script> alert ("${message}"); window.location.replace("/admin/login"); <script>`);
+     res.send(`<script> alert ("${message}"); window.location.replace("/admin/login"); </script>`);
   }
     
 };

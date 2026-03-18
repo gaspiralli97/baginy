@@ -1,67 +1,217 @@
+/* === VELMORA Admin — Home (SpaceKit) === */
+
 .home-container {
   position: relative;
-  width: auto;
-  height: auto;
-  min-height: 100%;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303f0, #dd6d04, #011c1afc, #7a6868);
+  background: #0C0C0C;
+  overflow: hidden;
 }
 
 .home-container a {
   text-decoration: none;
-  color: #000000;
+  color: #FFFFFF;
 }
 
 .home-container .nav-item a {
-  color: #e3c08d;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.home-container .nav-item a:hover {
+  opacity: 0.6;
 }
 
 .home-container .nav-item a.disabled {
-  color: #898071;
+  color: rgba(255,255,255,0.35);
 }
 
+/* ── Navigation ── */
 .home-container .navigation-menu {
   position: relative;
-  z-index: 10000;
-  color: #efefee;
-  font-size: 40px;
-  font-family: monospace;
-}
-
-.home-container .animation-frame {
-  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 24px 0 16px;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 55px;
-}
-
-.home-container .animation-wrapper {
-  position: relative;
-  width: 775px;
-  height: 775px;
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.home-container .sphere-animation {
+.home-container .navigation-menu .nav {
+  width: auto;
+}
+
+/* ── Animated diagonal stripe background ── */
+.bg-lines {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent 0px,
+    transparent 39px,
+    rgba(255, 255, 255, 0.04) 39px,
+    rgba(255, 255, 255, 0.04) 40px
+  );
+  animation: driftLines 28s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes driftLines {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(48px, 48px); }
+}
+
+/* ── Floating diamond shapes ── */
+.bg-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  bottom: -80px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  transform: rotate(45deg);
+  animation: floatUp linear infinite;
+}
+
+.s1 { width: 48px;  height: 48px;  left: 4%;  animation-duration: 14s; animation-delay: 0s;  }
+.s2 { width: 22px;  height: 22px;  left: 14%; animation-duration: 10s; animation-delay: 3s;  }
+.s3 { width: 65px;  height: 65px;  left: 28%; animation-duration: 20s; animation-delay: 1s;  }
+.s4 { width: 32px;  height: 32px;  left: 45%; animation-duration: 13s; animation-delay: 5s;  }
+.s5 { width: 50px;  height: 50px;  left: 60%; animation-duration: 16s; animation-delay: 2s;  }
+.s6 { width: 20px;  height: 20px;  left: 74%; animation-duration: 9s;  animation-delay: 6s;  }
+.s7 { width: 38px;  height: 38px;  left: 85%; animation-duration: 11s; animation-delay: 4s;  }
+.s8 { width: 26px;  height: 26px;  left: 94%; animation-duration: 15s; animation-delay: 1.5s; }
+
+@keyframes floatUp {
+  0%   { transform: rotate(45deg) translateY(0);        opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 0.8; }
+  100% { transform: rotate(90deg) translateY(-108vh);   opacity: 0; }
+}
+
+/* ── Hero frame ── */
+.hero-frame {
   position: relative;
-  width: 580px;
-  height: 580px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  min-height: calc(100vh - 100px);
 }
 
-.home-container .sphere path {
-  fill: url(#sphereGradient);
-  stroke-width: 1px;
-  stroke: rgba(80, 80, 80, 0.35);
-  backface-visibility: hidden;
+/* ── Rotating diamond rings ── */
+.ring {
+  position: absolute;
+  border: 1.5px solid rgba(248, 246, 241, 0.2);
+  transform: rotate(45deg);
+  animation: spinRing linear infinite;
 }
 
-@media (min-width: 500px) {
-  .sphere path {
-    stroke-width: 0.4px;
-  }
+.ring-1 {
+  width: 320px;
+  height: 320px;
+  border-color: rgba(248, 246, 241, 0.2);
+  animation-duration: 12s;
+}
+
+.ring-2 {
+  width: 480px;
+  height: 480px;
+  border-color: rgba(248, 246, 241, 0.1);
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+.ring-3 {
+  width: 620px;
+  height: 620px;
+  border-color: rgba(248, 246, 241, 0.05);
+  animation-duration: 30s;
+}
+
+@keyframes spinRing {
+  from { transform: rotate(45deg); }
+  to   { transform: rotate(405deg); }
+}
+
+/* ── Center diamond ── */
+.center-diamond {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #E07020;
+  transform: rotate(45deg);
+  animation: pulseDiamond 3s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(224, 112, 32, 0.45);
+}
+
+@keyframes pulseDiamond {
+  0%,100% { transform: rotate(45deg) scale(1);    box-shadow: 0 0 40px rgba(224,112,32,0.45); }
+  50%      { transform: rotate(45deg) scale(1.12); box-shadow: 0 0 65px rgba(224,112,32,0.65); }
+}
+
+/* ── Brand text ── */
+.hero-brand {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.hero-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 52px;
+  letter-spacing: 14px;
+  color: #F8F6F1;
+  line-height: 1;
+}
+
+.hero-sub {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #E07020;
+  text-transform: uppercase;
+}
+
+.hero-line {
+  width: 40px;
+  height: 2px;
+  background: #E07020;
+  animation: expandLine 1.5s ease 0.5s forwards;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+@keyframes expandLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
