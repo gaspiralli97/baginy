@@ -29,7 +29,13 @@ $("#process-btn").on("click", () =>{
 
     });
 
+     // Apply color on page load
+     $(".new-product-status").each(function() {
+        applyStatusColor($(this));
+     });
+
      $(".new-product-status").on("change", async function (e){
+        applyStatusColor($(this));
         const id = e.target.id,
               productStatus=$(`#${id}.new-product-status`).val();
         console.log("id",id);
@@ -53,6 +59,14 @@ $("#process-btn").on("click", () =>{
 
      });
 });
+
+function applyStatusColor(el) {
+    const val = el.val();
+    el.removeClass("status-pause status-process status-delete");
+    if (val === "PAUSE")   el.addClass("status-pause");
+    if (val === "PROCESS") el.addClass("status-process");
+    if (val === "DELETE")  el.addClass("status-delete");
+}
 
 function validateForm () {
     const productName = $(".product-name").val(),

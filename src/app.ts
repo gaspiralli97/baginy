@@ -51,6 +51,7 @@ app.use(morgan(MORGAN_FORMAT));
   app.use(function(req, res, next){
     const sessionInstance = req.session as T;
     res.locals.member = sessionInstance.member;
+    res.locals.path = req.path.replace(/^\/admin/, "") || "/";
     next();
   });
 /* 3-Views*/
