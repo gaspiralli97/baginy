@@ -6,7 +6,7 @@
   <div class="users-container">
     <% if(!member) { %>
     <div class="navigation-menu">
-      <ul class="nav justify-content-center">
+      <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
           <a class="nav-link active" href="/admin/">Home</a>
         </li>
@@ -25,7 +25,7 @@
 
     <% } else { %>
     <div class="navigation-menu">
-      <ul class="nav justify-content-center">
+      <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
           <a class="nav-link active" href="/admin/">Home</a>
         </li>
@@ -52,12 +52,12 @@
             >All Users List</span
           >
           <table class="table table-hover table-sm">
-            <thead class="thead-light">
-              <tr class="thead-light">
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Status</th>
+            <thead>
+              <tr style="background: #0C0C0C; color: #FFFFFF;">
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">No</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Name</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Phone</th>
+                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Status</th>
               </tr>
             </thead>
             

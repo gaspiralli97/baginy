@@ -1,66 +1,150 @@
+/* === VELMORA Admin — Login (SpaceKit) === */
+
 .login-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  animation: gradient 15s ease infinite;
-  -webkit-animation: gradient 15s ease infinite;
-  background-size: 200% 200%;
+  background: #F8F6F1;
+  overflow: hidden;
+  gap: 14px;
 }
 
 .login-container a {
   text-decoration: none;
-  color: black;
+  color: #0C0C0C;
+  transition: opacity 0.2s;
 }
 
+.login-container a:hover {
+  opacity: 0.7;
+}
+
+/* ── Animated diagonal stripe background ── */
+.bg-lines {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent 0px,
+    transparent 39px,
+    rgba(12, 12, 12, 0.06) 39px,
+    rgba(12, 12, 12, 0.06) 40px
+  );
+  animation: driftLines 28s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes driftLines {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(48px, 48px); }
+}
+
+/* ── Floating diamond shapes ── */
+.bg-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  bottom: -80px;
+  border: 1.5px solid rgba(12, 12, 12, 0.08);
+  transform: rotate(45deg);
+  animation: floatUp linear infinite;
+}
+
+.s1 { width: 48px;  height: 48px;  left: 7%;  animation-duration: 14s; animation-delay: 0s;  }
+.s2 { width: 24px;  height: 24px;  left: 22%; animation-duration: 10s; animation-delay: 3s;  background: rgba(12,12,12,0.04); }
+.s3 { width: 68px;  height: 68px;  left: 40%; animation-duration: 19s; animation-delay: 1s;  }
+.s4 { width: 34px;  height: 34px;  left: 58%; animation-duration: 12s; animation-delay: 5s;  background: rgba(12,12,12,0.03); }
+.s5 { width: 54px;  height: 54px;  left: 78%; animation-duration: 16s; animation-delay: 2s;  }
+.s6 { width: 20px;  height: 20px;  left: 91%; animation-duration: 9s;  animation-delay: 7s;  background: rgba(12,12,12,0.05); }
+
+@keyframes floatUp {
+  0%   { transform: rotate(45deg) translateY(0);        opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 0.8; }
+  100% { transform: rotate(90deg) translateY(-108vh);   opacity: 0; }
+}
+
+/* ── Brand label ── */
+.brand-label {
+  position: relative;
+  z-index: 10;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 7px;
+  color: #E07020;
+  animation: fadeDown 0.9s ease forwards;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Card ── */
 .login-container .login-frame {
   position: relative;
+  z-index: 10;
   width: 420px;
   height: auto;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  background: #ffffff;
-  padding: 25px;
+  border-radius: 18px;
+  background: #FFFFFF;
+  padding: 36px 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+  border-top: 3px solid #0C0C0C;
+  animation: slideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Top ── */
 .login-container .login-frame .login-top {
   position: relative;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 6px;
 }
 
 .login-container .login-top span {
-  font-family: "Poppins";
-  font-style: normal;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 34px;
+  color: #0C0C0C;
+  letter-spacing: -0.5px;
 }
 
-.login-container .login-top p {
-  margin-top: 15px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-}
-
+.login-container .login-top p,
 .login-container .login-top div {
-  font-family: "Poppins";
-  font-style: normal;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
+  font-size: 13px;
+  line-height: 22px;
+  color: #6B6869;
+  margin-top: 5px;
 }
 
+/* ── Input frame ── */
 .login-container .login-frame .login-input-frame {
   position: relative;
   width: 100%;
@@ -71,7 +155,7 @@
 
 .login-container .login-input-container {
   position: relative;
-  margin-top: 15px;
+  margin-top: 18px;
   width: 100%;
   height: auto;
   display: flex;
@@ -79,65 +163,82 @@
 }
 
 .login-container .login-input-container label {
-  margin-bottom: 0px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+  margin-bottom: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
   line-height: 18px;
+  color: #0C0C0C;
+  letter-spacing: 0.2px;
 }
 
 .login-container .login-input-container input {
   position: relative;
-  margin-top: 10px;
-  padding-left: 20px;
+  margin-top: 8px;
+  padding-left: 16px;
   width: 100%;
-  height: 55px;
-  background: #f6f5f5;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
+  height: 52px;
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.login-container .login-input-container input:focus {
+  border-color: #0C0C0C;
+  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.12);
+}
+
+/* ── Button ── */
 .login-container .login-frame .login-btn {
   position: relative;
-  margin-top: 25px;
+  margin-top: 28px;
   width: 100%;
-  height: 70px;
+  height: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #33a0ff;
+  background: #0C0C0C;
   border-radius: 10px;
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 33px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(12, 12, 12, 0.18);
 }
 
-/* Background animation */
-@-webkit-keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* shine sweep on hover */
+.login-container .login-frame .login-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.55s ease;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.login-container .login-frame .login-btn:hover {
+  background: #2A2A2A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(12, 12, 12, 0.28);
+}
+
+.login-container .login-frame .login-btn:hover::after {
+  left: 160%;
+}
+
+.login-container .login-frame .login-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 10px rgba(12, 12, 12, 0.14);
 }

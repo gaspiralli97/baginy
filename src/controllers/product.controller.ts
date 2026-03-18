@@ -86,6 +86,10 @@ productController.createNewProduct = async (req:AdminRequest, res:Response) =>{
             return ele.path.replace(/\\/g, "/");
         });
 
+        if (data.productCollection !== "TRAVEL") {
+            delete data.productSize;
+        }
+
         await productService.createNewProduct(data);
 
          res.send(`<script> alert ("Succesfull creation"); window.location.replace("/admin/product/all") </script>`);

@@ -1,24 +1,27 @@
 console.log("Products frontend javascript file");
 
 $(function() {
-    $(".product-collection").on("change", () =>{
-        const selectedValue = $(".product-collection").val();
-        if (selectedValue === "DRINK"){
-            $("#product-collection").hide();
-            $("#product-volume").show();
-        } else {
-            $("#product-volume").hide();
-            $("#product-collection").show();
-        }
-
-    });
-
-    $("#process-btn").on("click", () =>{
+$("#process-btn").on("click", () =>{
         $(".product-container").slideToggle(500);
         $("#process-btn").css("display","none");
 
     });
 
+
+     $("#product-type-select").on("change", function () {
+        if ($(this).val() === "TRAVEL") {
+            $("#product-size-box").slideDown(200);
+            $(".product-size").prop("disabled", false);
+        } else {
+            $("#product-size-box").slideUp(200);
+            $(".product-size").prop("disabled", true);
+        }
+     });
+
+     // disable size on page load since default type is not TRAVEL
+     if ($("#product-type-select").val() !== "TRAVEL") {
+        $(".product-size").prop("disabled", true);
+     }
 
      $("#cancel-btn").on("click", () =>{
         $(".product-container").slideToggle(100);

@@ -1,3 +1,5 @@
+/* === VELMORA Admin — Users (SpaceKit) === */
+
 .users-container {
   position: relative;
   width: auto;
@@ -7,52 +9,75 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383);
+  background: #F8F6F1;
 }
 
 .users-container a {
   text-decoration: none;
-  color: #000000;
+  color: #0C0C0C;
 }
 
 .users-container .nav-item a {
-  color: #e3c08d;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+
+.users-container .nav-item a:hover {
+  opacity: 0.7;
 }
 
 .users-container .nav-item a.disabled {
-  color: #898071;
+  color: rgba(255,255,255,0.4);
 }
 
+/* ── Navigation bar ── */
 .users-container .navigation-menu {
-  position: absolute;
-  z-index: 10000;
-  top: 1%;
-  color: #efefee;
-  font-size: 40px;
-  font-family: monospace;
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  background: #0C0C0C;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.users-container .navigation-menu .nav {
+  width: auto;
+}
+
+/* ── Users frame ── */
 .users-container .users-frame {
   position: relative;
   padding-bottom: 80px;
   width: 100%;
   height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* ── Board card ── */
 .users-container .users-frame .board {
   position: relative;
-  margin-top: 100px;
+  margin-top: 40px;
   width: 1320px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #E8E4DC;
+  border-radius: 16px;
+  padding: 32px;
 }
 
+/* ── Table sections ── */
 .users-container .board .products-table {
   position: relative;
   width: 100%;
@@ -73,38 +98,59 @@
   align-items: center;
 }
 
+/* ── Header name ── */
 .users-container .header-name {
-  font-family: "Source Serif Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 25px;
-  color: #ffffff;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 28px;
+  color: #0C0C0C;
 }
 
+/* ── Select focus ── */
 .users-container select:focus {
   min-width: 90%;
   width: auto;
 }
 
+/* ── Spec select (inline table select) ── */
 .users-container .spec-select {
   position: relative;
-  padding: 0px 7px;
-  /*width: 100%;*/
-  height: 27px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  padding: 0px 8px;
+  height: 30px;
+  background: #F8F6F1;
+  border: 1.5px solid #D0CCC4;
   border-radius: 8px;
-  font-family: "GT Walsheim Pro";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 26px;
-  color: #4f547b;
+  color: #0C0C0C;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
+.users-container .spec-select:focus {
+  border-color: #0C0C0C;
+}
+
+/* ── Table ── */
 .users-container table td,
 table th {
   text-align: center;
   vertical-align: middle;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: #0C0C0C;
+}
+
+.users-container table thead th {
+  background: #0C0C0C;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-color: #0C0C0C;
 }
