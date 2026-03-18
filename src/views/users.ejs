@@ -8,32 +8,35 @@
     <div class="navigation-menu">
       <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+          <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/admin/">Home</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/signup">SignUp</a>
+          <a class="nav-link <%= path.startsWith('/signup') ? 'active' : '' %>" href="/admin/signup">SignUp</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/login">Login</a>
+          <a class="nav-link <%= path.startsWith('/login') ? 'active' : '' %>" href="/admin/login">Login</a>
         </li>
       </ul>
     </div>
 
-    <div class="users-frame" style="color: #dddddd">
-      <div class="board" style="font-size: 40px">Please login first!</div>
+    <div class="users-frame">
+      <div class="not-auth-card">
+        <span class="not-auth-txt">Please login first!</span>
+        <a href="/admin/login" class="btn-login-link">Go to Login</a>
+      </div>
     </div>
 
     <% } else { %>
     <div class="navigation-menu">
       <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+          <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/admin/">Home</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Product List</a>
+          <a class="nav-link <%= path.startsWith('/product') ? 'active' : '' %>" href="/admin/product/all">Product List</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+          <a class="nav-link <%= path.startsWith('/user') ? 'active' : '' %>" href="/admin/user/all">Users</a>
         </li>
         <li
           class="nav-item"
@@ -46,39 +49,46 @@
     </div>
 
     <div class="users-frame">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <span class="page-title">Users</span>
+          <span class="page-subtitle">Manage and monitor all registered users</span>
+        </div>
+      </div>
+
       <div class="board">
         <div class="user-table">
-          <span class="header-name" style="margin-bottom: 30px"
-            >All Users List</span
-          >
-          <table class="table table-hover table-sm">
-            <thead>
-              <tr style="background: #0C0C0C; color: #FFFFFF;">
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">No</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Name</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Phone</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Status</th>
-              </tr>
-            </thead>
-            
-              <% users.map(function(value, index) { %>
-                 <tbody style="background: white">
-              <td><%= index + 1 %></td>
-              <td><%= value.memberNick %></td>
-              <td><%= value.memberPhone %></td>
-              <td style="width: 13%">
-                <select class="spec-select member-status" id="<%= value._id%>">
-                  <option value="ACTIVE" <%= value.memberStatus === `ACTIVE` ? `selected`: `` %>>ACTIVE</option>
-                  <option value="BLOCK" <%= value.memberStatus === `BLOCK` ? `selected`: `` %> >BLOCK</option>
-                  <option value="DELETE"<%= value.memberStatus === `DELETE` ? `selected`: `` %> >DELETE</option>
-                </select>
-              </td>
-            </tbody>
+          <div class="table-header-row">
+            <span class="header-name">All Users</span>
+          </div>
+          <div class="table-responsive-wrap">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
 
-             <% }) %>
-           
-            
-          </table>
+              <% users.map(function(value, index) { %>
+                <tbody>
+                  <td><%= index + 1 %></td>
+                  <td><%= value.memberNick %></td>
+                  <td><%= value.memberPhone %></td>
+                  <td>
+                    <select class="spec-select member-status" id="<%= value._id%>">
+                      <option value="ACTIVE" <%= value.memberStatus === `ACTIVE` ? `selected`: `` %>>ACTIVE</option>
+                      <option value="BLOCK" <%= value.memberStatus === `BLOCK` ? `selected`: `` %>>BLOCK</option>
+                      <option value="DELETE"<%= value.memberStatus === `DELETE` ? `selected`: `` %>>DELETE</option>
+                    </select>
+                  </td>
+                </tbody>
+              <% }) %>
+
+            </table>
+          </div>
         </div>
       </div>
     </div>

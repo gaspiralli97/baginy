@@ -1,156 +1,277 @@
-/* === VELMORA Admin — Users (SpaceKit) === */
+/* === VELMORA Admin — Users === */
 
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Page wrapper ── */
 .users-container {
-  position: relative;
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #F8F6F1;
+  background: #F0F2F5;
+  font-family: "Poppins", sans-serif;
 }
 
 .users-container a {
   text-decoration: none;
-  color: #0C0C0C;
-}
-
-.users-container .nav-item a {
-  color: #FFFFFF;
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: opacity 0.2s;
-}
-
-.users-container .nav-item a:hover {
-  opacity: 0.7;
-}
-
-.users-container .nav-item a.disabled {
-  color: rgba(255,255,255,0.4);
+  color: inherit;
 }
 
 /* ── Navigation bar ── */
 .users-container .navigation-menu {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   width: 100%;
   background: #0C0C0C;
-  padding: 0 40px;
-  height: 64px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
 .users-container .navigation-menu .nav {
   width: auto;
+  gap: 2px;
+}
+
+.users-container .nav-item a {
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding: 7px 16px;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.users-container .nav-item a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #FFFFFF;
+}
+
+.users-container .nav-item a.active {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid #E07020;
+  padding-bottom: 5px;
 }
 
 /* ── Users frame ── */
 .users-container .users-frame {
-  position: relative;
-  padding-bottom: 80px;
   width: 100%;
-  height: auto;
+  max-width: 1380px;
+  padding: 36px 28px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Not authenticated card ── */
+.users-container .not-auth-card {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.05);
+  padding: 60px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+}
+
+.users-container .not-auth-txt {
+  font-size: 22px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.users-container .btn-login-link {
+  background: #1C1C2E;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.18s;
+}
+
+.users-container .btn-login-link:hover {
+  background: #2D2D45;
+}
+
+/* ── Page title row ── */
+.users-container .page-title-row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.users-container .page-title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.users-container .page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.2px;
+}
+
+.users-container .page-subtitle {
+  font-size: 13px;
+  color: #9CA3AF;
+  font-weight: 400;
 }
 
 /* ── Board card ── */
-.users-container .users-frame .board {
-  position: relative;
-  margin-top: 40px;
-  width: 1320px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #FFFFFF;
-  border: 1px solid #E8E4DC;
-  border-radius: 16px;
-  padding: 32px;
-}
-
-/* ── Table sections ── */
-.users-container .board .products-table {
-  position: relative;
+.users-container .board {
   width: 100%;
-  height: auto;
-  margin-top: 30px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.05);
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.users-container .board .user-table {
-  position: relative;
-  width: 85%;
-  height: auto;
-  margin-top: 30px;
+/* ── User table section ── */
+.users-container .user-table {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 18px;
 }
 
-/* ── Header name ── */
+/* ── Table header row ── */
+.users-container .table-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .users-container .header-name {
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
+  font-size: 15px;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 28px;
-  color: #0C0C0C;
+  color: #111827;
+  letter-spacing: 0.1px;
 }
 
-/* ── Select focus ── */
-.users-container select:focus {
-  min-width: 90%;
-  width: auto;
+/* ── Table wrapper ── */
+.users-container .table-responsive-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
 }
 
-/* ── Spec select (inline table select) ── */
-.users-container .spec-select {
-  position: relative;
-  padding: 0px 8px;
-  height: 30px;
-  background: #F8F6F1;
-  border: 1.5px solid #D0CCC4;
-  border-radius: 8px;
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 26px;
-  color: #0C0C0C;
-  outline: none;
-  transition: border-color 0.2s;
+.users-container table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
 }
 
-.users-container .spec-select:focus {
-  border-color: #0C0C0C;
-}
-
-/* ── Table ── */
-.users-container table td,
-table th {
-  text-align: center;
-  vertical-align: middle;
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
-  color: #0C0C0C;
+.users-container table thead tr {
+  background: #1C1C2E;
 }
 
 .users-container table thead th {
-  background: #0C0C0C;
-  color: #FFFFFF;
+  background: #1C1C2E;
+  color: rgba(255,255,255,0.85);
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  padding: 13px 16px;
+  text-align: center;
+  border: none;
+  white-space: nowrap;
+}
+
+.users-container table thead th:first-child { border-radius: 10px 0 0 0; }
+.users-container table thead th:last-child  { border-radius: 0 10px 0 0; }
+
+.users-container table tbody tr {
+  border-bottom: 1px solid #F3F4F6;
+  transition: background 0.14s, box-shadow 0.14s;
+}
+
+.users-container table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.users-container table tbody tr:hover {
+  background: #F9FAFB;
+  box-shadow: inset 0 0 0 1px #E5E7EB;
+}
+
+.users-container table td {
+  padding: 13px 16px;
+  text-align: center;
+  vertical-align: middle;
   font-size: 13px;
-  border-color: #0C0C0C;
+  color: #374151;
+  background: transparent;
+}
+
+.users-container table td:nth-child(2) {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* ── Spec select (status in table) ── */
+.users-container .spec-select {
+  height: 30px;
+  padding: 0 28px 0 10px;
+  background: #F9FAFB;
+  border: 1px solid #D1D5DB;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.3px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' fill='none'%3E%3Cpath d='M1 1l3.5 3.5L8 1' stroke='%236B7280' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+}
+
+.users-container .spec-select:hover {
+  border-color: #9CA3AF;
+  background-color: #F3F4F6;
+}
+
+.users-container .spec-select:focus {
+  border-color: #1C1C2E;
+  box-shadow: 0 0 0 3px rgba(28,28,46,0.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .users-container .users-frame {
+    padding: 24px 16px 60px;
+  }
+  .users-container .board {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .users-container .page-title { font-size: 18px; }
 }

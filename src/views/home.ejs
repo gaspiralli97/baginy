@@ -5,43 +5,26 @@
 <body>
   <div class="home-container">
 
-    <!-- animated background -->
-    <div class="bg-lines"></div>
-    <div class="bg-shapes">
-      <span class="shape s1"></span>
-      <span class="shape s2"></span>
-      <span class="shape s3"></span>
-      <span class="shape s4"></span>
-      <span class="shape s5"></span>
-      <span class="shape s6"></span>
-      <span class="shape s7"></span>
-      <span class="shape s8"></span>
-    </div>
-
     <div class="navigation-menu">
       <ul class="nav justify-content-center">
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin">Home</a>
+          <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/admin">Home</a>
         </li>
         <% if(!member) { %>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/signup">Signup</a>
+          <a class="nav-link <%= path.startsWith('/signup') ? 'active' : '' %>" href="/admin/signup">Signup</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/login">Login</a>
+          <a class="nav-link <%= path.startsWith('/login') ? 'active' : '' %>" href="/admin/login">Login</a>
         </li>
         <% } else { %>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Product List</a>
+          <a class="nav-link <%= path.startsWith('/product') ? 'active' : '' %>" href="/admin/product/all">Product List</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+          <a class="nav-link <%= path.startsWith('/user') ? 'active' : '' %>" href="/admin/user/all">Users</a>
         </li>
-        <li
-          class="nav-item"
-          style="cursor: pointer"
-          onclick="return confirm('Do you want to logout?')"
-        >
+        <li class="nav-item" style="cursor: pointer" onclick="return confirm('Do you want to logout?')">
           <a class="nav-link" href="/admin/logout">Logout</a>
         </li>
         <% } %>
@@ -50,19 +33,126 @@
 
     <div class="hero-frame">
 
-      <!-- rotating diamond rings -->
-      <div class="ring ring-1"></div>
-      <div class="ring ring-2"></div>
-      <div class="ring ring-3"></div>
-
-      <!-- center diamond -->
-      <div class="center-diamond"></div>
-
-      <!-- brand text -->
+      <!-- Brand -->
       <div class="hero-brand">
+        <div class="hero-tag">Admin Panel</div>
         <span class="hero-title">VELMORA</span>
         <span class="hero-sub">Premium Bag Collection</span>
         <div class="hero-line"></div>
+        <div class="hero-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </div>
+
+      <!-- 3D Luggage Carousel -->
+      <div class="luggage-scene">
+        <div class="luggage-carousel" id="luggageCarousel">
+
+          <!-- Luggage 1: Light Grey + Orange handle -->
+          <div class="luggage-item item-1">
+            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Handle posts -->
+              <rect x="68" y="12" width="11" height="46" rx="5.5" fill="#E07020"/>
+              <rect x="121" y="12" width="11" height="46" rx="5.5" fill="#E07020"/>
+              <!-- Handle bar -->
+              <rect x="63" y="10" width="74" height="14" rx="7" fill="#E07020"/>
+              <!-- Body -->
+              <rect x="14" y="54" width="172" height="210" rx="18" fill="#C8CAD0"/>
+              <!-- Body shine -->
+              <rect x="14" y="54" width="86" height="210" rx="18" fill="rgba(255,255,255,0.10)"/>
+              <!-- Bands -->
+              <rect x="14" y="108" width="172" height="16" rx="0" fill="#B0B3BB"/>
+              <rect x="14" y="194" width="172" height="16" rx="0" fill="#B0B3BB"/>
+              <!-- Center zipper -->
+              <rect x="95" y="54" width="10" height="210" rx="5" fill="#9EA3AD"/>
+              <!-- Lock -->
+              <rect x="80" y="143" width="40" height="30" rx="7" fill="#E07020"/>
+              <rect x="88" y="136" width="24" height="16" rx="8" fill="none" stroke="#E07020" stroke-width="4"/>
+              <circle cx="100" cy="158" r="5" fill="#C8CAD0"/>
+              <!-- Corner guards -->
+              <rect x="14" y="54" width="22" height="22" rx="5" fill="#9EA3AD" opacity="0.7"/>
+              <rect x="164" y="54" width="22" height="22" rx="5" fill="#9EA3AD" opacity="0.7"/>
+              <rect x="14" y="242" width="22" height="22" rx="5" fill="#9EA3AD" opacity="0.7"/>
+              <rect x="164" y="242" width="22" height="22" rx="5" fill="#9EA3AD" opacity="0.7"/>
+              <!-- Wheels -->
+              <rect x="22" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <rect x="152" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <circle cx="35" cy="273" r="7" fill="#1a1a1a"/>
+              <circle cx="165" cy="273" r="7" fill="#1a1a1a"/>
+            </svg>
+          </div>
+
+          <!-- Luggage 2: Burgundy + Grey handle -->
+          <div class="luggage-item item-2">
+            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Handle posts -->
+              <rect x="68" y="12" width="11" height="46" rx="5.5" fill="#9E9E9E"/>
+              <rect x="121" y="12" width="11" height="46" rx="5.5" fill="#9E9E9E"/>
+              <!-- Handle bar -->
+              <rect x="63" y="10" width="74" height="14" rx="7" fill="#9E9E9E"/>
+              <!-- Body -->
+              <rect x="14" y="54" width="172" height="210" rx="18" fill="#722F37"/>
+              <!-- Body shine -->
+              <rect x="14" y="54" width="86" height="210" rx="18" fill="rgba(255,255,255,0.08)"/>
+              <!-- Bands -->
+              <rect x="14" y="108" width="172" height="16" rx="0" fill="#5C2530"/>
+              <rect x="14" y="194" width="172" height="16" rx="0" fill="#5C2530"/>
+              <!-- Center zipper -->
+              <rect x="95" y="54" width="10" height="210" rx="5" fill="#4A1E25"/>
+              <!-- Lock -->
+              <rect x="80" y="143" width="40" height="30" rx="7" fill="#9E9E9E"/>
+              <rect x="88" y="136" width="24" height="16" rx="8" fill="none" stroke="#9E9E9E" stroke-width="4"/>
+              <circle cx="100" cy="158" r="5" fill="#722F37"/>
+              <!-- Corner guards -->
+              <rect x="14" y="54" width="22" height="22" rx="5" fill="#4A1E25" opacity="0.8"/>
+              <rect x="164" y="54" width="22" height="22" rx="5" fill="#4A1E25" opacity="0.8"/>
+              <rect x="14" y="242" width="22" height="22" rx="5" fill="#4A1E25" opacity="0.8"/>
+              <rect x="164" y="242" width="22" height="22" rx="5" fill="#4A1E25" opacity="0.8"/>
+              <!-- Wheels -->
+              <rect x="22" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <rect x="152" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <circle cx="35" cy="273" r="7" fill="#1a1a1a"/>
+              <circle cx="165" cy="273" r="7" fill="#1a1a1a"/>
+            </svg>
+          </div>
+
+          <!-- Luggage 3: Gold + Green handle -->
+          <div class="luggage-item item-3">
+            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Handle posts -->
+              <rect x="68" y="12" width="11" height="46" rx="5.5" fill="#2E7D32"/>
+              <rect x="121" y="12" width="11" height="46" rx="5.5" fill="#2E7D32"/>
+              <!-- Handle bar -->
+              <rect x="63" y="10" width="74" height="14" rx="7" fill="#2E7D32"/>
+              <!-- Body -->
+              <rect x="14" y="54" width="172" height="210" rx="18" fill="#C9A84C"/>
+              <!-- Body shine -->
+              <rect x="14" y="54" width="86" height="210" rx="18" fill="rgba(255,255,255,0.12)"/>
+              <!-- Bands -->
+              <rect x="14" y="108" width="172" height="16" rx="0" fill="#B8923E"/>
+              <rect x="14" y="194" width="172" height="16" rx="0" fill="#B8923E"/>
+              <!-- Center zipper -->
+              <rect x="95" y="54" width="10" height="210" rx="5" fill="#A07830"/>
+              <!-- Lock -->
+              <rect x="80" y="143" width="40" height="30" rx="7" fill="#2E7D32"/>
+              <rect x="88" y="136" width="24" height="16" rx="8" fill="none" stroke="#2E7D32" stroke-width="4"/>
+              <circle cx="100" cy="158" r="5" fill="#C9A84C"/>
+              <!-- Corner guards -->
+              <rect x="14" y="54" width="22" height="22" rx="5" fill="#A07830" opacity="0.8"/>
+              <rect x="164" y="54" width="22" height="22" rx="5" fill="#A07830" opacity="0.8"/>
+              <rect x="14" y="242" width="22" height="22" rx="5" fill="#A07830" opacity="0.8"/>
+              <rect x="164" y="242" width="22" height="22" rx="5" fill="#A07830" opacity="0.8"/>
+              <!-- Wheels -->
+              <rect x="22" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <rect x="152" y="262" width="26" height="22" rx="11" fill="#2D2D2D"/>
+              <circle cx="35" cy="273" r="7" fill="#1a1a1a"/>
+              <circle cx="165" cy="273" r="7" fill="#1a1a1a"/>
+            </svg>
+          </div>
+
+        </div>
       </div>
 
     </div>

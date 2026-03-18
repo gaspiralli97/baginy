@@ -7,13 +7,13 @@
     <div class="navigation-menu">
       <ul class="nav">
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+          <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/admin/">Home</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Product List</a>
+          <a class="nav-link <%= path.startsWith('/product') ? 'active' : '' %>" href="/admin/product/all">Product List</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+          <a class="nav-link <%= path.startsWith('/user') ? 'active' : '' %>" href="/admin/user/all">Users</a>
         </li>
         <li
           class="nav-item"
@@ -26,31 +26,37 @@
     </div>
 
     <div class="seller-product-list-frame">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <span class="page-title">Products</span>
+          <span class="page-subtitle">Manage and monitor all seller products</span>
+        </div>
+      </div>
       <div class="board">
         <div class="products-table">
-          <span class="new-product-txt" style="margin-bottom: 30px">
-            SELLER PRODUCT LIST
-          </span>
-          <table class="table table-bordered table-hover" style="cursor: pointer">
+          <div class="table-header-row">
+            <span class="new-product-txt">All Products</span>
+            <button class="btn btn-primary" id="process-btn">+ New Product</button>
+          </div>
+          <div class="table-responsive-wrap">
+          <table class="table table-hover mb-0">
             <thead>
-              <tr style="background: #0C0C0C; color: #FFFFFF;">
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">T/r</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Name</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Type</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Price</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Left Count</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Bundle</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Color</th>
-                
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Mode</th>
-                
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Product Size</th>
-                <th scope="col" style="background: #0C0C0C; color: #FFFFFF;">Status</th>
+              <tr>
+                <th scope="col">T/r</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Type</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product Left Count</th>
+                <th scope="col">Product Bundle</th>
+                <th scope="col">Product Color</th>
+                <th scope="col">Product Mode</th>
+                <th scope="col">Product Size</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <!--  LOOP PRODUCTS: START  -->
               <% products.map(function(value, key) { %>
-               <tbody style="background: white">
+               <tbody>
               <td><%= key + 1%></td>
               <td><%= value.productName %></td>
               <td><%= value.productCollection %></td>
@@ -60,6 +66,7 @@
               <td><%= value.productColor %></td>
               <td><%= value.productMode %></td>
               <td><%= value.productSize %></td>
+               
               
               <td>
                 <select class="spec-select new-product-status" id="<%= value._id %>">
@@ -73,14 +80,6 @@
             
             <!--  LOOP PRODUCTS: END  -->
           </table>
-          <div
-            class="long-input"
-            style="align-items: flex-end; margin-bottom: 25px"
-            style="cursor: pointer"
-          >
-            <button class="btn btn-primary" id="process-btn" style="background: #0C0C0C; border: none; color: #FFFFFF;">
-              New Product
-            </button>
           </div>
         </div>
         <form
@@ -90,9 +89,7 @@
           class="product-container"
           enctype="multipart/form-data"
         >
-          <div class="long-input" style="display: flex; align-items: center">
-            <span class="new-product-txt">NEW PRODUCT DETAIL</span>
-          </div>
+          <div class="form-section-title">New Product Detail</div>
           <div class="login-input-frame">
             <div class="long-input">
               <label>Product Name</label>
@@ -243,9 +240,7 @@
 
           <div class="operation-buttons">
             <button class="btn btn-danger" id="cancel-btn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="create-btn" style="background: #0C0C0C; border: none; color: #FFFFFF;">
-              Create
-            </button>
+            <button type="submit" class="btn btn-primary" id="create-btn">Create Product</button>
           </div>
         </form>
       </div>
