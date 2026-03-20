@@ -1,7 +1,7 @@
 {
-  "name": "velmora",
+  "name": "baginy",
   "version": "1.0.0",
-  "description": "this is velmora project backend",
+  "description": "this is baginy project backend",
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",

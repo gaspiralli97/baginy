@@ -29,7 +29,10 @@ class ProductService{
 
       if(inquiry.productCollection)
          match.productCollection=inquiry.productCollection;
-      
+
+      if(inquiry.productMode)
+         match.productMode=inquiry.productMode;
+
       if(inquiry.search){
          match.productName={$regex: new RegExp(inquiry.search, "i")};
       }
