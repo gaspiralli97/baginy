@@ -1,4 +1,4 @@
-import { Product, ProductInput, ProductInquiry, ProductUpdateInput } from "../libs/types/product";
+import { Product, ProductInput, ProductInquiry, ProductsResponse, ProductUpdateInput } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 import Errors from "../libs/Errors";
 import { HttpCode } from "../libs/Errors";
@@ -24,7 +24,7 @@ class ProductService{
    }
 
    /**SPA */
-   public async getProducts(inquiry:ProductInquiry):Promise<Product[]>{
+   public async getProducts(inquiry:ProductInquiry):Promise<ProductsResponse>{
       const match: T = {productStatus:ProductStatus.PROCESS};
 
       if(inquiry.productCollection)
@@ -38,7 +38,9 @@ class ProductService{
       }
       const sort:T=inquiry.order ==="productPrice" ? {[inquiry.order]:1} : {[inquiry.order]:-1};
 
-      const result = await this.productModel
+      const total = await this.productModel.countDocuments(match);
+
+      const data = await this.productModel
         .aggregate([
           {$match:match},
           {$sort:sort},
@@ -46,9 +48,9 @@ class ProductService{
           {$limit:inquiry.limit *1},
         ])
         .exec();
-      if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+      if(!data) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-      return result;
+      return {data, total};
    }
 
    public async getProduct(
@@ -73,14 +75,14 @@ class ProductService{
          console.log("exist", !!existView);
          //Insert New View 
          if(!existView) {
-            
-            await this.viewService.checkViewExistence(input);
+
+            await this.viewService.insertMemberView(input);
 
             //Increase  View
             result = await this.productModel
               .findByIdAndUpdate(
                  productId,
-                 { $inc: {productView: +1}},
+                 { $inc: {productViews: +1}},
                  {new:true}
               )
               .exec();
