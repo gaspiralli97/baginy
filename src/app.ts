@@ -85,4 +85,4 @@ io.on("connection", (socket)=>{
   });
 });
 
-export default app;
+export default server;
