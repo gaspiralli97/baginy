@@ -7,14 +7,14 @@ console.log("PORT:", process.env.PORT);
 console.log("MONGO_URL:", process.env.MONGO_URL);
 
 import mongoose from "mongoose";
-import app from "./app"; 
+import server from "./app"; 
 
 mongoose
 .connect(process.env.MONGO_URL as string,{})
 .then((data) => {
     console.log("MongoDB connection succeded");
     const PORT =process.env.PORT ?? 3003;
-    app.listen(PORT, function() {
+    server.listen(PORT, function() {
         console.info(`The server is running succesfully on port: ${PORT}`);
         console.info(`Admin poject on http://localhost:${PORT}/admin \n`);
     });
