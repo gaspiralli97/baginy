@@ -11,6 +11,6 @@ module.exports = {
        NODE_ENV: "development"
     }, 
     instances:1,
-    exec_mode:"cluster"
+    exec_mode:"fork"
   }]
 }
