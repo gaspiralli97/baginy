@@ -1,9 +1,11 @@
-# Velmora API
+# Baginy API
 
 **Live:** [baginy.kr](https://baginy.kr) · **Frontend:** [baginy-react](https://github.com/gaspiralli97/baginy-react)
 
 Backend for [baginy.kr](https://baginy.kr), a luggage and travel-bag store. Express and MongoDB, with a
 server-rendered admin panel and a Socket.IO channel for live chat.
+
+<img src="docs/screenshots/storefront.jpg" alt="The Baginy storefront this API serves" width="100%" />
 
 ## Tech Stack
 
